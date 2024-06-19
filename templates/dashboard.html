@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <h2>Welcome, {{ current_user.username }}!</h2>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <h3>Your Travel Destinations</h3>
+    <ul>
+        {% for destination in destinations %}
+            <li>{{ destination.name }} - {{ destination.description }}</li>
+        {% else %}
+            <li>You have no destinations yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_destination') }}">Add a new destination</a>
+</body>
+</html>
